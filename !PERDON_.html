@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perdóname, mi amor Karen 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffb6c1, #ffdde1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      color: #fff;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      animation: latido 1.5s infinite;
+      margin-bottom: 10px;
+    }
+
+    @keyframes latido {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    p {
+      max-width: 650px;
+      font-size: 1.3em;
+      line-height: 1.6;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.3);
+    }
+
+    .botones {
+      margin-top: 25px;
+    }
+
+    button {
+      background: #ff4b5c;
+      border: none;
+      color: white;
+      font-size: 18px;
+      padding: 12px 28px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+      background: #ff1e56;
+      transform: scale(1.1);
+    }
+
+    .corazon {
+      position: absolute;
+      font-size: 24px;
+      animation: flotar 6s linear infinite;
+    }
+
+    @keyframes flotar {
+      0% { transform: translateY(100vh) scale(1); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(0.5); opacity: 0; }
+    }
+
+    #mensajeExtra {
+      margin-top: 15px;
+      font-size: 1.2em;
+      color: #fff8f8;
+      font-style: italic;
+      min-height: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💞 Perdóname, mi amor Karen 💞</h1>
+
+  <p>
+    Sé que a veces no te entiendo del todo, y que mis palabras o silencios pueden herirte sin querer.  
+    Pero quiero que sepas, mi amor, que en mi corazón no hay otra intención más que amarte. 💖  
+    <br><br>
+    ¿Me perdonas, mi vida? 💌
+  </p>
+
+  <div class="botones">
+    <button onclick="responderSi()">💖 Sí 💖</button>
+    <button onclick="responderNo()">💔 No 💔</button>
+  </div>
+
+  <div id="mensajeExtra"></div>
+
+  <script>
+    const mensajesNo = [
+      "😢 Amooor… si me dices que sí te invito mil abrazos más 💕",
+      "🥺 Pero Karen… ¿cómo voy a estar bien si tú no me perdonas?",
+      "💌 Sabes que te amo, y que sin ti nada tiene sentido 💘",
+      "🌹 Apura, di que sí… prometo entenderte mejor cada día 💞",
+      "💖 Eres mi todo, Karen… por favor, dame tu perdón 💖"
+    ];
+
+    let intento = 0;
+
+    function responderSi() {
+      document.body.innerHTML = `
+        <h1>💞 Gracias, mi amor Karen 💞</h1>
+        <p>Tu perdón significa el mundo para mí.  
+        Prometo esforzarme por comprenderte mejor, amarte más, y nunca dejar de cuidar tu corazón. 💖</p>
+        <h2>Te amo infinitamente 💘</h2>
+      `;
+      crearCorazones();
+    }
+
+    function responderNo() {
+      const mensaje = document.getElementById("mensajeExtra");
+      if (intento < mensajesNo.length) {
+        mensaje.innerHTML = mensajesNo[intento];
+        intento++;
+      } else {
+        mensaje.innerHTML = "💞 Está bien... pero igual te amo y aquí estaré esperando tu sí 💞";
+      }
+    }
+
+    function crearCorazones() {
+      for (let i = 0; i < 20; i++) {
+        const corazon = document.createElement("div");
+        corazon.classList.add("corazon");
+        corazon.innerHTML = "❤️";
+        corazon.style.left = Math.random() * 100 + "vw";
+        corazon.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(corazon);
+        setTimeout(() => corazon.remove(), 6000);
+      }
+      setInterval(() => crearCorazones(), 3000);
+    }
+  </script>
+
+</body>
+</html>
